@@ -1,0 +1,19 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="row">
+    <div class="col-xs-10">
+        <p style="color: rgba(1, 125, 197)"> 
+            <i>* Shopping List Component under construction</i></p>
+        <app-shopping-list-edit></app-shopping-list-edit>
+        <hr>
+        <ul class="list-group">
+            <a 
+            class="list-group-item" 
+            style="cursor: pointer"
+            *ngFor="let ingredients of ingredients; let i =index"
+            (click)="onEditItem(i)">
+                {{ingredients.name}}, ({{ingredients.amount}})
+                
+        </a>
+        </ul>
+    </div>
+</div>

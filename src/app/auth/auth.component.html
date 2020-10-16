@@ -1,0 +1,44 @@
+<!-- Handles:  -->
+
+<div class="row">
+    
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <!-- <div class="alert alert-danger" *ngIf="error">
+            <p>{{ error }}</p>
+        </div> -->
+        <p style="color: rgb(1, 125, 197);" *ngIf="!isLoading">
+            <i>Features are not currently available for mobile devices.</i></p>
+        <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
+        <div *ngIf="isLoading" style="text-align: center;">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+            <div class="form-group">
+                <label for="email"> Email </label>
+                <input type="email" id="email" class="form-control"
+                ngModel
+                name="email"
+                required>
+            </div>
+            <div class="form-group">
+                <label for="password"> Password </label>
+                <input type="password" id="password" class="form-control"
+                ngModel
+                name="password"
+                required
+                minlength="6">
+            </div>
+            <div>
+                <button class="btn btn-primary" 
+                type="submit" [disabled]="!authForm.valid">
+                {{ isLoginMode ? 'Log In' : 'Sign-Up'}}</button> |
+                <button class="btn btn-primary" 
+                (click)="onSwitchMode()"
+                type="button"> {{ isLoginMode ? 'Go to Sign-Up' : 'I already have an account' }}</button>
+            </div>
+        </form>    
+        <br>
+        <p *ngIf="isLoginMode && !isLoading" style="color: rgba(1, 125, 197)"><b>* Use your registered email and password to log in. <br> * If you are not a registered user, please select sign up and register.</b></p>
+        <p *ngIf="!isLoginMode && !isLoading" style="color: rgba(1, 125, 197)"><b>* Sign up with an email and password to access this application.</b></p>
+    </div>
+</div>

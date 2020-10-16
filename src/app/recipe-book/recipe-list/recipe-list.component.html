@@ -1,0 +1,17 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success" (click)="newRecipe()">New Recipe</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <recipe-item *ngFor="let recipeEl of recipes; let i = index"
+        [recipe]="recipeEl"
+        [index]="i"></recipe-item>
+        <!-- recieve index from ngfor loop for each iteration of a recipe-item
+        bind the index "i" value to index property
+        use [index] dynamic property in item.component for dynamic parameters in link -->
+    </div>
+</div>
